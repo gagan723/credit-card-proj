@@ -7,12 +7,43 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Carrousel-styles.css';
 
-const sampleTextItems = [
-  { id: '1', text: 'Sample Text 1' },
-  { id: '2', text: 'Sample Text 2' },
-  { id: '3', text: 'Sample Text 3' },
-  { id: '4', text: 'Sample Text 4' },
-  { id: '5', text: 'Sample Text 5' }
+const CreditCardsInfo = [
+  {
+    nameId: 'CardA',
+    account: '3283-02-009-76275-1',
+    number: '3890 2345 3283',
+    date: '01/29',
+    name: 'Name LastName',
+    ica: '123',
+    balance: '$2.000',
+    client: 'US2864254-6658-508043',
+    type: 'americanExpress', //visa,mastercard or americanExpress
+    styles: ''
+  },
+  {
+    nameId: 'CardB',
+    account: '2972-91-997-65148-2',
+    number: '4513 6305 2972',
+    date: '06/28',
+    name: 'Name LastName',
+    ica: '456',
+    balance: '$9.070',
+    client: 'US1838250-7124-871250',
+    type: 'mastercard', //visa,mastercard or americanExpress
+    styles: 'linear-gradient( 76.3deg,  rgba(44,62,78,1) 12.6%, rgba(69,103,131,1) 82.8% )'
+  },
+  {
+    nameId: 'CardC',
+    account: '0328-77-999-27481-7',
+    number: '8547 6637 0328',
+    date: '03/24',
+    name: 'Name LastName',
+    ica: '789',
+    balance: '$4.000',
+    client: 'US8434248-1007-87432',
+    type: 'visa', //visa,mastercard or americanExpress
+    styles: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(37,145,251,0.98) 0.1%, rgba(0,7,128,1) 99.8% )'
+  }
 ];
 
 function CardsCarrousel() {
@@ -28,13 +59,14 @@ function CardsCarrousel() {
     <div className={styles.father} id='father'>
       <div className={styles.header}>
         <h2 style={{ fontSize: '30px', fontWeight: 'bolder', margin: '0 30px' }}>
-          Sample Carousel
+          Your Credit Cards
         </h2>
       </div>
       <Slider className={styles.carrousel} {...settings}>
-        {sampleTextItems.map((item) => (
-          <div key={item.id} className={styles.item}>
-            <p>{item.text}</p>
+        {CreditCardsInfo.map((cardData, index) => (
+          <div key={index} className={styles.item}>
+            <CreditCard locked={true} data={cardData} />
+            <BottomDrawer data={cardData} />
           </div>
         ))}
       </Slider>
